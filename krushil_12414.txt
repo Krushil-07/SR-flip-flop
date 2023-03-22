@@ -1,0 +1,70 @@
+# Name: Krushil Detroja    
+# Branch: B.tech 
+# Course: computer enginnering
+# IAR NO: 12414
+
+# S-R flip flop code using gates:
+
+def not_gate(input):
+    return not input
+
+def and_gate(input1, input2):
+    return input1 and input2
+
+def or_gate(input1, input2):
+    return input1 or input2
+
+def sr_flip_flop(s, r, q, q_bar):
+    not_s = not_gate(s)
+    not_r = not_gate(r)
+    
+    set_signal = and_gate(s, q_bar)
+    reset_signal = and_gate(r, q)
+    
+    q = or_gate(reset_signal, q)
+    q_bar = or_gate(set_signal, q_bar)
+    
+    if s and r:
+        state = "Invalid input"
+        print("\nS-R Flip-Flop:")
+        print("Input S: ", s)
+        print("Input R: ", r)
+        print("Output Q: ", q)
+        print("Output Q_bar: False ")
+        print("\nState: ", state)
+    elif s:
+        state = "Set condition"
+        print("\nS-R Flip-Flop:")
+        print("Input S: ", s)
+        print("Input R: ", r)
+        print("Output Q: ", q)
+        print("Output Q_bar: ", q_bar)
+        print("\nState: ", state)
+    elif r:
+        state = "Reset condition"
+        print("\nS-R Flip-Flop:")
+        print("Input S: ", s)
+        print("Input R: ", r)
+        print("Output Q: ", q)
+        print("Output Q_bar: ", q_bar)
+        print("\nState: ", state)
+    else:
+        state = "Hold condition"
+        print("\nS-R Flip-Flop:")
+        print("Input S: ", s)
+        print("Input R: ", r)
+        print("Output Q:  q")
+        print("Output Q_bar:  q_bar")
+        print("\nState: ", state)
+    
+    return q, q_bar
+
+# input from user
+s = int(input("Enter value of S (0 or 1): "))
+r = int(input("Enter value of R (0 or 1): "))
+
+q = False
+q_bar = not_gate(q)
+
+# calling function
+sr_flip_flop(s, r, q, q_bar)
